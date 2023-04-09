@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Music App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Đăng Ký</string>
+    <string name="user_name">Tên Tài Khoản</string>
+    <string name="email">Email</string>
+    <string name="password">Mật Khẩu  ( Phải lớn hơn hoặc bằng 6 )</string>
+    <string name="confirm_password">Nhập lại mật khẩu</string>
+    <string name="yesAcount">Bạn đã có tài khoản?</string>
+    <string name="noAcount">Bạn chưa có tài khoản?</string>
+
+    <string name="sign_in">Đăng Nhập</string>
+    <string name="reset_password">Đặt lại mật khẩu</string>
+    <string name="thongBao_resetPass">Nhập email của bạn đã đăng ký!</string>
+    <string name="forget_password">Quên mật khẩu</string>
+    <string name="go_back"><![CDATA[< Quay lại]]></string>
+</resources>
