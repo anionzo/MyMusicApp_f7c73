@@ -134,7 +134,7 @@ public class SignInFragment extends Fragment {
                             signInProgress.setVisibility(View.INVISIBLE);
                             if(task.isSuccessful())
                             {
-                                Intent intent = new Intent(getActivity(), HomeFragment.class);
+                                Intent intent = new Intent(getActivity(), MenuFragment.class);
                                 getActivity().startActivity(intent);
                                 getActivity().finish();
                             }else {

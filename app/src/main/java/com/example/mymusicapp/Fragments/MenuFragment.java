@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
         ArrayList<String> arrayList=new ArrayList<>(0);
 
         fragmentArrayList.add(new HomeFragment());
-        fragmentArrayList.add(new SignInFragment());
+        fragmentArrayList.add(new PlaylistFragment());
 
         imageList =new int[]{R.drawable.ic_home,R.drawable.ic_error};
         // Add title in array list
@@ -61,7 +61,7 @@ public class MenuFragment extends Fragment {
     private void prepareViewPager(ViewPager viewPagerMenu, ArrayList<String> arrayList) {
         menuAdapter = new MenuAdapter(getActivity().getSupportFragmentManager());
         menuAdapter.addFragment(new HomeFragment(),arrayList.get(0));
-        menuAdapter.addFragment(new SignInFragment(),arrayList.get(1));
+        menuAdapter.addFragment(new PlaylistFragment(),arrayList.get(1));
 
         viewPagerMenu.setAdapter(menuAdapter);
         tabLayoutMenu.setupWithViewPager(viewPagerMenu);
