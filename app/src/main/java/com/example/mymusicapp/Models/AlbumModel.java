@@ -1,12 +1,14 @@
 package com.example.mymusicapp.Models;
 
+import java.util.ArrayList;
+
 public class AlbumModel {
     private String idAlbum;
     private String nameAlbum;
     private String imgAlbum;
-    private SongList songs;
+    private ArrayList<SongModel> songs;
 
-    public AlbumModel(String idAlbum, String nameAlbum, String imgAlbum, SongList songs) {
+    public AlbumModel(String idAlbum, String nameAlbum, String imgAlbum, ArrayList<SongModel> songs) {
         this.idAlbum = idAlbum;
         this.nameAlbum = nameAlbum;
         this.imgAlbum = imgAlbum;
@@ -37,11 +39,11 @@ public class AlbumModel {
         this.imgAlbum = imgAlbum;
     }
 
-    public SongList getSongs() {
+    public ArrayList<SongModel> getSongs() {
         return songs;
     }
 
-    public void setSongs(SongList songs) {
+    public void setSongs(ArrayList<SongModel> songs) {
         this.songs = songs;
     }
 }

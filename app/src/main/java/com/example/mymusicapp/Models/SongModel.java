@@ -6,17 +6,17 @@ public class SongModel {
     private String idCategory;
     private String idAlbum;
     private String nameSong;
-    private String linkSong;
-    private String idSinger;
+    private int linkSong;
+    private String nameSinger;
 
-    public SongModel(String idSong, String idPlayList, String idCategory, String idAlbum, String nameSong, String linkSong, String idAuthor) {
+    public SongModel(String idSong, String idPlayList, String idCategory, String idAlbum, String nameSong, int linkSong, String nameSinger) {
         this.idSong = idSong;
         this.idPlayList = idPlayList;
         this.idCategory = idCategory;
         this.idAlbum = idAlbum;
         this.nameSong = nameSong;
         this.linkSong = linkSong;
-        this.idSinger = idAuthor;
+        this.nameSinger = nameSinger;
     }
 
     public String getIdSong() {
@@ -59,19 +59,19 @@ public class SongModel {
         this.nameSong = nameSong;
     }
 
-    public String getLinkSong() {
+    public int getLinkSong() {
         return linkSong;
     }
 
-    public void setLinkSong(String linkSong) {
+    public void setLinkSong(int linkSong) {
         this.linkSong = linkSong;
     }
 
-    public String getIdSinger() {
-        return idSinger;
+    public String getNameSinger() {
+        return nameSinger;
     }
 
-    public void setIdSinger(String idSinger) {
-        this.idSinger = idSinger;
+    public void setNameSinger(String nameSinger) {
+        this.nameSinger = nameSinger;
     }
 }

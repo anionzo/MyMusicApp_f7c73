@@ -31,20 +31,6 @@
             android:layout_below="@id/slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/see_more_playlists"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="Xem thêm playlist"
-            android:textSize="19sp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:drawablePadding="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:layout_below="@id/list_play_item"
-            />
+
     </RelativeLayout>
 </FrameLayout>

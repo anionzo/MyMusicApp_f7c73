@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/menuColor"
-        app:tabIndicatorColor="@color/tab_in_color"
+        app:tabIndicatorColor="@color/endColor"
         app:tabInlineLabel="true"
         app:tabIconTint="@color/menu_icon_display"
         app:tabSelectedTextColor="@color/endColor"
