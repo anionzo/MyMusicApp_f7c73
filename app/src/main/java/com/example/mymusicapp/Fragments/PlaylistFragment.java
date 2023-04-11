@@ -96,4 +96,6 @@ public class PlaylistFragment extends Fragment {
         songAdapter.setData(geSongs());
         recyclerViewPlayItem.setAdapter(songAdapter);
     }
+
+
 }

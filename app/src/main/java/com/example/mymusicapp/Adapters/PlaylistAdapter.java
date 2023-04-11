@@ -27,8 +27,8 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ViewHolder viewHolder = new ViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_playlist,parent,false));
-        return viewHolder;
+        View  view = LayoutInflater.from(context).inflate(R.layout.fragment_playlist,parent,false);
+        return new ViewHolder(view) ;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameListPlay;
         ViewPager  slider;
