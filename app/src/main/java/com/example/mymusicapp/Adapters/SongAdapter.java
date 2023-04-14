@@ -24,9 +24,9 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     Context context;
     ArrayList<SongModel> songs;
 
-    public SongAdapter(Context context, ArrayList<SongModel> items) {
+    public SongAdapter(Context context, ArrayList<SongModel> songs) {
         this.context = context;
-        this.songs = items;
+        this.songs = songs;
     }
     public void setData(ArrayList<SongModel> items) {
         this.songs = items;
@@ -47,7 +47,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             return;
         }
         else {
-            holder.imgItem.setImageResource(song.getLinkSong());
+            holder.imgItem.setImageResource(song.getLinkImg());
             holder.nameSongItem.setText(song.getNameSong());
             holder.nameAuthorItem.setText(song.getNameSinger());
             holder.imgItem.setOnClickListener(new View.OnClickListener() {

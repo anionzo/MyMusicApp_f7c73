@@ -3,15 +3,16 @@ package com.example.mymusicapp.Models;
 import java.io.Serializable;
 
 public class SongModel implements Serializable{
-    private String idSong;
+    private int idSong;
     private String idPlayList;
     private String idCategory;
     private String idAlbum;
     private String nameSong;
-    private int linkSong;
+    private int linkImg;
     private String nameSinger;
+    private int linkSong;
 
-    public SongModel(String idSong, String idPlayList, String idCategory, String idAlbum, String nameSong, int linkSong, String nameSinger) {
+    public SongModel(int idSong, String idPlayList, String idCategory, String idAlbum, String nameSong, int linkImg, String nameSinger, int linkSong) {
         this.idSong = idSong;
         this.idPlayList = idPlayList;
         this.idCategory = idCategory;
@@ -19,13 +20,14 @@ public class SongModel implements Serializable{
         this.nameSong = nameSong;
         this.linkSong = linkSong;
         this.nameSinger = nameSinger;
+        this.linkImg = linkImg;
     }
 
-    public String getIdSong() {
+    public int getIdSong() {
         return idSong;
     }
 
-    public void setIdSong(String idSong) {
+    public void setIdSong(int idSong) {
         this.idSong = idSong;
     }
 
@@ -75,5 +77,13 @@ public class SongModel implements Serializable{
 
     public void setNameSinger(String nameSinger) {
         this.nameSinger = nameSinger;
+    }
+
+    public int getLinkImg() {
+        return linkImg;
+    }
+
+    public void setLinkImg(int linkImg) {
+        this.linkImg = linkImg;
     }
 }
