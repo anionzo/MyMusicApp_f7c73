@@ -50,6 +50,10 @@ public class PlaySongActivity extends AppCompatActivity {
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
         mediaPlayer= MediaPlayer.create(getApplicationContext(),song.getLinkSong());
         getPlaySong(song);
+        if(song != null)
+        {
+            currentIndex = -99;
+        }
         playSong.setImageResource(R.drawable.ic_stop);
 
         //Phát nhạc
@@ -66,7 +70,11 @@ public class PlaySongActivity extends AppCompatActivity {
                     mediaPlayer.start();
                     playSong.setImageResource(R.drawable.ic_stop);
                 }
-                getPlaySong(songs.get(currentIndex));
+                if (currentIndex == -99)
+                {
+                    getPlaySong(song);
+                }else
+                    getPlaySong(songs.get(currentIndex));
 
             }
         });
