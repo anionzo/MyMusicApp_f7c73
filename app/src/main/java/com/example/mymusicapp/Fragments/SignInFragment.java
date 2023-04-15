@@ -134,11 +134,13 @@ public class SignInFragment extends Fragment {
                             signInProgress.setVisibility(View.INVISIBLE);
                             if(task.isSuccessful())
                             {
-                                Intent intent = new Intent(getActivity(), HomeFragment.class);
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                Toast.makeText(getContext(),"Đăng nhập thành công", Toast.LENGTH_LONG).show();
                                 getActivity().startActivity(intent);
                                 getActivity().finish();
                             }else {
-                                Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
+
                                 setButtonSignInTrue();
                             }
                         }
@@ -165,7 +167,6 @@ public class SignInFragment extends Fragment {
 
 
     }
-
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction =getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_right, R.anim.out_from_right);

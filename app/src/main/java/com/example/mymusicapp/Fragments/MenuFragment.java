@@ -23,6 +23,7 @@ public class MenuFragment extends Fragment {
     private TabLayout tabLayoutMenu;
     private ViewPager viewPagerMenu;
     private MenuAdapter menuAdapter;
+
     private ArrayList<Fragment> fragmentArrayList = new ArrayList<Fragment>();
 
     private   int[] imageList = new int[10];
@@ -42,31 +43,38 @@ public class MenuFragment extends Fragment {
         ArrayList<String> arrayList=new ArrayList<>(0);
 
         fragmentArrayList.add(new HomeFragment());
-        fragmentArrayList.add(new SignInFragment());
+        fragmentArrayList.add(new SearchFragment());
 
-        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_error};
+        fragmentArrayList.add(new HomeFragment());
+        fragmentArrayList.add(new PlaylistFragment());
+
+        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_folder};
         // Add title in array list
-        arrayList.add("Home");
-        arrayList.add("login");
-
+        arrayList.add("");
+        arrayList.add("");
+        arrayList.add("");
+        arrayList.add("");
 
         // Setup tab layout
         tabLayoutMenu.setupWithViewPager(viewPagerMenu);
 
         // Prepare view pager
-        prepareViewPager(viewPagerMenu,arrayList);
+        prepareViewPager(viewPagerMenu,fragmentArrayList,arrayList,tabLayoutMenu,imageList);
         return view;
     }
 
-    private void prepareViewPager(ViewPager viewPagerMenu, ArrayList<String> arrayList) {
+    private void prepareViewPager(ViewPager viewPagerMenu,ArrayList<Fragment> listFram ,ArrayList<String> arrayList,TabLayout tabLayoutMe, int[] imageList) {
         menuAdapter = new MenuAdapter(getActivity().getSupportFragmentManager());
-        menuAdapter.addFragment(new HomeFragment(),arrayList.get(0));
-        menuAdapter.addFragment(new SignInFragment(),arrayList.get(1));
+        for (int i = 0; i< listFram.size(); i++){
+            menuAdapter.addFragment(listFram.get(i),arrayList.get(i));
+        }
 
         viewPagerMenu.setAdapter(menuAdapter);
-        tabLayoutMenu.setupWithViewPager(viewPagerMenu);
-        tabLayoutMenu.getTabAt(0).setIcon(R.drawable.ic_home);
-        tabLayoutMenu.getTabAt(1).setIcon(R.drawable.ic_error);
+        tabLayoutMe.setupWithViewPager(viewPagerMenu);
+        for (int i =0 ; i< listFram.size(); i++) {
+            tabLayoutMe.getTabAt(i).setIcon(imageList[i]);
+        }
+
     }
 
 }

@@ -7,8 +7,8 @@
     </item>
     <item
         android:gravity="center"
-        android:height="200dp"
-        android:width="200dp">
-        <inset android:drawable="@drawable/ic_app_icon" />
+        android:height="330dp"
+        android:width="330dp">
+        <inset android:drawable="@drawable/logo_modau" />
     </item>
 </layer-list>

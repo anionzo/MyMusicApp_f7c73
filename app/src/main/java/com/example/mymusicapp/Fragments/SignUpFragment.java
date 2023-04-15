@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mymusicapp.Activities.MainActivity;
+import com.example.mymusicapp.Activities.RegisterActivity;
 import com.example.mymusicapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -175,7 +176,7 @@ public class SignUpFragment extends Fragment {
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                    Intent intent = new Intent(getActivity(), SignInFragment.class);
+                                                    Intent intent = new Intent(getActivity(), RegisterActivity.class);
                                                     getActivity().startActivity(intent);
                                                     getActivity().finish();
                                                 }
