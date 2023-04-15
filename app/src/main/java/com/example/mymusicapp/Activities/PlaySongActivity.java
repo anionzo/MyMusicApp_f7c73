@@ -45,16 +45,15 @@ public class PlaySongActivity extends AppCompatActivity {
 
         initView();
         songs = getSongs();
-
         Bundle bundle = getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
-        mediaPlayer= MediaPlayer.create(getApplicationContext(),song.getLinkSong());
-        getPlaySong(song);
         if(song != null)
         {
+            mediaPlayer= MediaPlayer.create(getApplicationContext(),song.getLinkSong());
             currentIndex = -99;
+            getPlaySong(song);
+            playSong.setImageResource(R.drawable.ic_stop);
         }
-        playSong.setImageResource(R.drawable.ic_stop);
 
         //Phát nhạc
         playSong.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,10 @@ public class PlaySongActivity extends AppCompatActivity {
                 if (mediaPlayer != null){
                     playSong.setImageResource(R.drawable.ic_stop);
                 }
-
+                if (currentIndex == -99)
+                {
+                    currentIndex =0;
+                }
                 if (currentIndex < songs.size() -1){
                     currentIndex++;
                 }else{

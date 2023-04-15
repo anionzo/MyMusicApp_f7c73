@@ -33,6 +33,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(fragmentMenu.getId(), fragment);
         fragmentTransaction.commit();
     }
-
-
 }
