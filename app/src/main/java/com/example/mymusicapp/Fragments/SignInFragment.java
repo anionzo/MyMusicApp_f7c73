@@ -134,7 +134,7 @@ public class SignInFragment extends Fragment {
                             signInProgress.setVisibility(View.INVISIBLE);
                             if(task.isSuccessful())
                             {
-                                Intent intent = new Intent(getActivity(), MenuFragment.class);
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
                                 getActivity().startActivity(intent);
                                 getActivity().finish();
                             }else {
@@ -165,7 +165,6 @@ public class SignInFragment extends Fragment {
 
 
     }
-
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction =getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_right, R.anim.out_from_right);
