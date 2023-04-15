@@ -135,10 +135,12 @@ public class SignInFragment extends Fragment {
                             if(task.isSuccessful())
                             {
                                 Intent intent = new Intent(getActivity(), MainActivity.class);
+                                Toast.makeText(getContext(),"Đăng nhập thành công", Toast.LENGTH_LONG).show();
                                 getActivity().startActivity(intent);
                                 getActivity().finish();
                             }else {
-                                Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
+
                                 setButtonSignInTrue();
                             }
                         }
