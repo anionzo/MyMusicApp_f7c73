@@ -12,7 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mymusicapp.Adapters.SliderAdapter;
@@ -50,6 +49,7 @@ public class PlaylistFragment extends Fragment {
         recyclerViewPlayItem = view.findViewById(R.id.list_play_item);
         slider =view.findViewById(R.id.slider);
         //seeMorePlaylist = view.findViewById(R.id.see_more_playlists);
+
 
         sliderModel = new ArrayList<>();
         // Set IMG
