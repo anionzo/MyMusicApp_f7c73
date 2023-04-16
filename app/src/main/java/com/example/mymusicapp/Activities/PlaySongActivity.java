@@ -2,20 +2,20 @@ package com.example.mymusicapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.mymusicapp.Models.SongModel;
 import com.example.mymusicapp.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlaySongActivity extends AppCompatActivity {
@@ -28,6 +28,7 @@ public class PlaySongActivity extends AppCompatActivity {
     static MediaPlayer mediaPlayer;
     private AudioManager audioManager;
     private int currentIndex = 0;
+    private Thread musicThread;
     ArrayList<SongModel> songs = new ArrayList<>();
 
     @Override
@@ -42,17 +43,26 @@ public class PlaySongActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song);
-
         initView();
+
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         songs = getSongs();
         Bundle bundle = getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
         if(song != null)
         {
-            mediaPlayer= MediaPlayer.create(getApplicationContext(),song.getLinkSong());
-            currentIndex = -99;
-            getPlaySong(song);
-            playSong.setImageResource(R.drawable.ic_stop);
+            String url = "https://mymusicappf7c73s.000webhostapp.com/Music/Sao-Minh-Chua-Nam-Tay-Nhau-Yan-Nguyen.mp3";
+            //mediaPlayer= MediaPlayer.create(getApplicationContext(),song.getLinkSong());
+            try {
+                mediaPlayer.setDataSource(url);
+                mediaPlayer.prepare();
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         }
 
         //Phát nhạc
@@ -141,18 +151,23 @@ public class PlaySongActivity extends AppCompatActivity {
 
     private  ArrayList<SongModel> getSongs(){
         ArrayList<SongModel> songs = new ArrayList<>();
-        songs.add(new SongModel(0,"2","3","3","Hỉ",R.drawable.poster1,"Thập Đẳng Ma Quân",R.raw.hi));
-        songs.add(new SongModel(1,"2","3","3","Sao mình chưa nắm tay nhau",R.drawable.poster2,"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
-        songs.add(new SongModel(2,"2","3","3","Siêu cô đơn",R.drawable.poster3,"Yan Nguyễn",R.raw.sieu_co_don));
-        songs.add(new SongModel(3,"2","3","3","Thập Đẳng Ma Quân",R.drawable.poster4,"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
-        songs.add(new SongModel(4,"2","3","3","Thiên Nam Ca",R.drawable.poster4,"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
+        songs.add(new SongModel(0,"3","3","Hỉ",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.hi));
+        songs.add(new SongModel(1,"3","3","Sao mình chưa nắm tay nhau",getString(R.string.url_img2),"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
+        songs.add(new SongModel(2,"3","3","Siêu cô đơn",getString(R.string.url_img1),"Yan Nguyễn",R.raw.sieu_co_don));
+        songs.add(new SongModel(3,"3","3","Thập Đẳng Ma Quân",getString(R.string.url_img3),"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
+        songs.add(new SongModel(4,"3","3","Thiên Nam Ca",getString(R.string.url_img4),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
         return songs;
     }
 
     private void getPlaySong(SongModel song){
         songSinger.setText(song.getNameSinger());
         songTitle.setText(song.getNameSong());
-        imageSong.setImageResource(song.getLinkImg());
+        //imageSong.setImageResource(song.getLinkImg());
+
+        Glide.with(this)
+                .load(song.getLinkImg())
+                .centerCrop()
+                .into(imageSong);
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -160,6 +175,7 @@ public class PlaySongActivity extends AppCompatActivity {
                 mediaPlayer.start();
             }
         });
+
         seekBarTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

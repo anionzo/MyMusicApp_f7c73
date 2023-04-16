@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.mymusicapp.Models.SliderModel;
 import com.example.mymusicapp.R;
 
@@ -45,9 +46,13 @@ public class SliderAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slider_item,null);
-        ImageView sliderImg= view.findViewById(R.id.slider_img);
         TextView sliderTitle = view.findViewById(R.id.slider_title);
-        sliderImg.setImageResource(sliderModelList.get(position).getImg());
+        ImageView sliderImg= view.findViewById(R.id.slider_img);
+        Glide.with(context)
+                        .load(sliderModelList.get(position).getImg())
+                                .centerCrop()
+                                        .into(sliderImg);
+
         sliderTitle.setText(sliderModelList.get(position).getSlideName());
         container.addView(view);
         return  view;

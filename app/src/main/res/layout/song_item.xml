@@ -29,8 +29,7 @@
             <LinearLayout
                 android:id="@+id/line_layout"
                 android:layout_gravity="center"
-                android:layout_width="250dp"
-                android:gravity="center"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -38,12 +37,14 @@
                     android:id="@+id/name_song_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sao mình chưa nắn"
+                    android:text="Sao mình chưa nắm tay nhau"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textColor="@color/white"
                     android:textSize="19sp" />
 
                 <TextView
-                    android:id="@+id/name_author_item"
+                    android:id="@+id/name_singer_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Yan Nguyễn"

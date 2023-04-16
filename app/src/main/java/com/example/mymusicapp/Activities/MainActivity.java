@@ -10,12 +10,6 @@ import android.widget.FrameLayout;
 
 import com.example.mymusicapp.Fragments.MenuFragment;
 import com.example.mymusicapp.R;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 
 public class MainActivity extends AppCompatActivity {
 

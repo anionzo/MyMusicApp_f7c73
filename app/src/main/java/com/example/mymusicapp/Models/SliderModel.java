@@ -1,19 +1,19 @@
 package com.example.mymusicapp.Models;
 
 public class SliderModel {
-    private int Img;
+    private String Img;
     private String slideName;
 
-    public SliderModel(int img, String slideName) {
-        Img = img;
+    public SliderModel(String img, String slideName) {
+        this.Img = img;
         this.slideName = slideName;
     }
 
-    public int getImg() {
+    public String getImg() {
         return Img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         Img = img;
     }
 
