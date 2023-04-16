@@ -27,10 +27,8 @@
                 android:src="@drawable/ic_headphones" />
 
             <LinearLayout
-                android:id="@+id/line_layout"
                 android:layout_gravity="center"
                 android:layout_width="250dp"
-                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 

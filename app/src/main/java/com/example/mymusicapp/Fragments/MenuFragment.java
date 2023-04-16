@@ -44,6 +44,7 @@ public class MenuFragment extends Fragment {
 
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new SearchFragment());
+
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new PlaylistFragment());
 
