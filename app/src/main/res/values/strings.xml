@@ -16,11 +16,17 @@
     <string name="forget_password">Quên mật khẩu</string>
     <string name="go_back"><![CDATA[< Quay lại]]></string>
 
-    <string name="url_img" >https://i.pinimg.com/564x/97/23/0a/97230aa258a6e4fc403bbd9f506e8ace.jpg</string>
+    <string name="url_img">https://i.pinimg.com/564x/97/23/0a/97230aa258a6e4fc403bbd9f506e8ace.jpg</string>
     <string name="url_img1">https://i.pinimg.com/564x/3f/e8/40/3fe84073c5ae4002087863558d1967e9.jpg</string>
     <string name="url_img2">https://i.pinimg.com/750x/65/8b/58/658b582d8e3544604f33ca80a0f79545.jpg</string>
     <string name="url_img3">https://i.pinimg.com/564x/8e/21/00/8e210076c8eba59dd3b3b2c2cceb7627.jpg</string>
     <string name="url_img4">https://i.pinimg.com/564x/41/30/54/4130548a73c9d7029e5ef91072a4110a.jpg</string>
 
-
+    <string name="url_music"></string>
+    <string name="url_music2"></string>
+    <string name="url_music3"></string>
+    <string name="url_music4"></string>
+    <string name="url_music5"></string>
+    <string name="url_music6"></string>
+    <string name="url_music7"></string>
 </resources>

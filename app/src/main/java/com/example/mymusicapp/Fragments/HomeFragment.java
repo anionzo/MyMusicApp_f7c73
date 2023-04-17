@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment {
         timer = new Timer();
 
         slidersModelList = new ArrayList<>();
+
         slidersModelList.add(new SliderModel(getString(R.string.url_img), "Danh sách nhạc #Tes"));
         slidersModelList.add(new SliderModel(getString(R.string.url_img1), "Danh sách nhạc #2"));
         slidersModelList.add(new SliderModel(getString(R.string.url_img2), "Danh sách nhạc #3"));

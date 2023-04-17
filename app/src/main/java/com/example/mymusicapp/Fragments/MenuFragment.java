@@ -44,11 +44,13 @@ public class MenuFragment extends Fragment {
 
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new SearchFragment());
-        fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new PlaylistFragment());
+        fragmentArrayList.add(new ListCategoryFragment());
+        fragmentArrayList.add(new SearchFragment());
 
-        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_folder};
+        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_person, R.drawable.ic_folder};
         // Add title in array list
+        arrayList.add("");
         arrayList.add("");
         arrayList.add("");
         arrayList.add("");

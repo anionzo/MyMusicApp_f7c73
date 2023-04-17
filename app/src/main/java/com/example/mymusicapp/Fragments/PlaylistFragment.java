@@ -54,6 +54,8 @@ public class PlaylistFragment extends Fragment {
         sliderModel = new ArrayList<>();
         // Set IMG
         sliderModel.add(new SliderModel(getString(R.string.url_img1),"Vì yêu em"));
+
+
         sliderAdapter = new SliderAdapter(getContext(),sliderModel);
         slider.setAdapter(sliderAdapter);
 
@@ -77,12 +79,11 @@ public class PlaylistFragment extends Fragment {
 
     private ArrayList<SongModel> getSongs() {
         ArrayList<SongModel> songs = new ArrayList<>();
-
-        songs.add(new SongModel(0,"3","3","Hỉ",getString(R.string.url_img3),"Thập Đẳng Ma Quân",R.raw.hi));
-        songs.add(new SongModel(1,"3","3","Sao mình chưa nắm tay nhau",getString(R.string.url_img2),"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
-        songs.add(new SongModel(2,"3","3","Siêu cô đơn",getString(R.string.url_img1),"Yan Nguyễn",R.raw.sieu_co_don));
-        songs.add(new SongModel(3,"3","3","Thập Đẳng Ma Quân",getString(R.string.url_img4),"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
-        songs.add(new SongModel(4,"3","3","Thiên Nam Ca",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
+        songs.add(new SongModel("0","3","3","Hỉ",getString(R.string.url_img3),"Thập Đẳng Ma Quân",R.raw.hi));
+        songs.add(new SongModel("1","3","3","Sao mình chưa nắm tay nhau",getString(R.string.url_img2),"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
+        songs.add(new SongModel("2","3","3","Siêu cô đơn",getString(R.string.url_img1),"Yan Nguyễn",R.raw.sieu_co_don));
+        songs.add(new SongModel("3","3","3","Thập Đẳng Ma Quân",getString(R.string.url_img4),"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
+        songs.add(new SongModel("4","3","3","Thiên Nam Ca",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
         return songs;
     }
 }
