@@ -15,11 +15,11 @@ import com.example.mymusicapp.R;
 
 import java.util.ArrayList;
 
-public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHolder> {
+public class ShowCategoryAdapter extends RecyclerView.Adapter<ShowCategoryAdapter.ViewHolder> {
     private Context context;
     ArrayList<PlaylistModel> items;
 
-    public PlaylistAdapter(Context context, ArrayList<PlaylistModel> items) {
+    public ShowCategoryAdapter(Context context, ArrayList<PlaylistModel> items) {
         this.context = context;
         this.items = items;
     }
@@ -27,7 +27,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View  view = LayoutInflater.from(context).inflate(R.layout.fragment_playlist,parent,false);
+        View  view = LayoutInflater.from(context).inflate(R.layout.fragment_show_category,parent,false);
         return new ViewHolder(view) ;
     }
 
@@ -59,5 +59,4 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
 
         }
     }
-
 }

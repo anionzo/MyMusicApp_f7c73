@@ -1,3 +1,4 @@
+// Hiển thị danh sách bài hát có trong category  khi được chọn
 package com.example.mymusicapp.Fragments;
 
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mymusicapp.Adapters.SliderAdapter;
@@ -24,7 +24,7 @@ import com.example.mymusicapp.R;
 import java.util.ArrayList;
 
 
-public class PlaylistFragment extends Fragment {
+public class ShowCategoryFragment extends Fragment {
 
     private TextView nameListPlay;
     private RecyclerView recyclerViewPlayItem;
@@ -45,14 +45,15 @@ public class PlaylistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_playlist, container, false);
+        View view = inflater.inflate(R.layout.fragment_show_category, container, false);
+
         nameListPlay = view.findViewById(R.id.name_list_play);
         recyclerViewPlayItem = view.findViewById(R.id.list_play_item);
         slider =view.findViewById(R.id.slider);
         //seeMorePlaylist = view.findViewById(R.id.see_more_playlists);
 
         sliderModel = new ArrayList<>();
-        // Set IMG
+        // Set IMG của 1
         sliderModel.add(new SliderModel(getString(R.string.url_img1),"Vì yêu em"));
 
 

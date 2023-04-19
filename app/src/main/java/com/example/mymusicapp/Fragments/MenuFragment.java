@@ -1,10 +1,8 @@
 package com.example.mymusicapp.Fragments;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -44,8 +42,8 @@ public class MenuFragment extends Fragment {
 
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new SearchFragment());
-        fragmentArrayList.add(new PlaylistFragment());
         fragmentArrayList.add(new ListCategoryFragment());
+        fragmentArrayList.add(new ShowCategoryFragment());
         fragmentArrayList.add(new SearchFragment());
 
         imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_person, R.drawable.ic_folder};

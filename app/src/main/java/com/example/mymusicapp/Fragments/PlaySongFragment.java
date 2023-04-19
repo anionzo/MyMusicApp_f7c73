@@ -200,7 +200,6 @@ public class PlaySongFragment extends Fragment {
     private void getPlaySong(SongModel song){
         songSinger.setText(song.getNameSinger());
         songTitle.setText(song.getNameSong());
-        //imageSong.setImageResource(song.getLinkImg());
 
         Glide.with(PlaySongFragment.this)
                 .load(song.getLinkImg())

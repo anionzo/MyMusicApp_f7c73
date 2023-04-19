@@ -24,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler;
     private FirebaseAuth mAuth;
     private String DB_PATH_SUFFIX ="/databases/";
-    private SQLiteDatabase database = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

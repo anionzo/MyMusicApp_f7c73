@@ -17,6 +17,8 @@
            android:textColor="@color/whiteSong"/>
 
        <androidx.recyclerview.widget.RecyclerView
+           android:layout_marginTop="30dp"
+           android:id="@+id/list_category"
            android:layout_below="@+id/name_list_category"
            android:layout_marginLeft="20dp"
            android:layout_width="match_parent"

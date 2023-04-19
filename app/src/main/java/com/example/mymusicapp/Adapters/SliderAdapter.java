@@ -45,13 +45,14 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.slider_item,null);
+        View view = layoutInflater.inflate(R.layout.item_slider,null);
         TextView sliderTitle = view.findViewById(R.id.slider_title);
         ImageView sliderImg= view.findViewById(R.id.slider_img);
+
         Glide.with(context)
-                        .load(sliderModelList.get(position).getImg())
-                                .centerCrop()
-                                        .into(sliderImg);
+                .load(sliderModelList.get(position).getImg())
+                .centerCrop()
+                .into(sliderImg);
 
         sliderTitle.setText(sliderModelList.get(position).getSlideName());
         container.addView(view);
