@@ -29,7 +29,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:gravity="center"
-            android:text="Phát Nhạc"
+            android:text=""
             android:textColor="@color/whiteSong"
             android:textSize="20sp" />
 

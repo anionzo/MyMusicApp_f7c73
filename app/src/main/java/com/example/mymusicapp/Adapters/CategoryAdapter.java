@@ -14,8 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.mymusicapp.Activities.PlaySongActivity;
-import com.example.mymusicapp.Fragments.ShowCategoryFragment;
+import com.example.mymusicapp.Activities.ShowListActivity;
 import com.example.mymusicapp.Models.CategoryModel;
 import com.example.mymusicapp.R;
 
@@ -54,11 +53,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
                     .load(category.getImgCategory())
                     .centerCrop()
                     .into(holder.categoryImg);
+
             holder.categoryTitle.setText(category.getNameCategory());
             holder.playCategory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, ShowCategoryFragment.class);
+                    Intent intent = new Intent(context, ShowListActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("itemCategory", category);
                     intent.putExtras(bundle);

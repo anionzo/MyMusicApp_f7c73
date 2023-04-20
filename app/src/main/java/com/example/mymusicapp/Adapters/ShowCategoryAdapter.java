@@ -34,7 +34,6 @@ public class ShowCategoryAdapter extends RecyclerView.Adapter<ShowCategoryAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PlaylistModel playlistModel = items.get(position);
-
     }
 
     @Override
@@ -44,7 +43,6 @@ public class ShowCategoryAdapter extends RecyclerView.Adapter<ShowCategoryAdapte
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView nameListPlay;
         ViewPager  slider;
         RecyclerView listPlayItem;

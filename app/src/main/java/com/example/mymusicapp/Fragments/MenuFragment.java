@@ -38,16 +38,17 @@ public class MenuFragment extends Fragment {
         tabLayoutMenu = view.findViewById(R.id.tab_layout_menu);
         viewPagerMenu = view.findViewById(R.id.view_pager_menu);
 
+        // Khai báo tên Của các TabItem
         ArrayList<String> arrayList=new ArrayList<>(0);
 
         fragmentArrayList.add(new HomeFragment());
         fragmentArrayList.add(new SearchFragment());
         fragmentArrayList.add(new ListCategoryFragment());
-        fragmentArrayList.add(new ShowCategoryFragment());
+        fragmentArrayList.add(new SearchFragment());
         fragmentArrayList.add(new SearchFragment());
 
         imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_person, R.drawable.ic_folder};
-        // Add title in array list
+        // khai báo nhưng không sài Có thể thêm để xem thử
         arrayList.add("");
         arrayList.add("");
         arrayList.add("");
@@ -73,7 +74,6 @@ public class MenuFragment extends Fragment {
         for (int i =0 ; i< listFram.size(); i++) {
             tabLayoutMe.getTabAt(i).setIcon(imageList[i]);
         }
-
     }
 
 }

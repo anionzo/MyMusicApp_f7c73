@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.mymusicapp.Adapters.SliderAdapter;
 import com.example.mymusicapp.Adapters.SongAdapter;
+import com.example.mymusicapp.Models.CategoryModel;
 import com.example.mymusicapp.Models.SliderModel;
 import com.example.mymusicapp.Models.SongModel;
 import com.example.mymusicapp.R;
@@ -31,7 +32,7 @@ public class ShowCategoryFragment extends Fragment {
     private ViewPager slider;
     private SliderAdapter sliderAdapter;
     private SongAdapter songAdapter;
-    private ArrayList<SongModel> songModelArrayList;
+    private ArrayList<SongModel> songModelArrayList = new ArrayList<>();
     //private TextView seeMorePlaylist;
     private ArrayList<SliderModel> sliderModel;
     LinearLayoutManager layoutManager;
@@ -50,19 +51,6 @@ public class ShowCategoryFragment extends Fragment {
         nameListPlay = view.findViewById(R.id.name_list_play);
         recyclerViewPlayItem = view.findViewById(R.id.list_play_item);
         slider =view.findViewById(R.id.slider);
-        //seeMorePlaylist = view.findViewById(R.id.see_more_playlists);
-
-        sliderModel = new ArrayList<>();
-        // Set IMG của 1
-        sliderModel.add(new SliderModel(getString(R.string.url_img1),"Vì yêu em"));
-
-
-        sliderAdapter = new SliderAdapter(getContext(),sliderModel);
-        slider.setAdapter(sliderAdapter);
-
-
-        songAdapter = new SongAdapter(getContext(),songModelArrayList);
-        layoutManager =new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
 
 
         return view;
@@ -73,9 +61,33 @@ public class ShowCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerViewPlayItem.setLayoutManager(layoutManager);
-        songAdapter.setData(getSongs());
-        recyclerViewPlayItem.setAdapter(songAdapter);
+        // Lấy id từ bên list category ra
+        Bundle bundle = getActivity().getIntent().getExtras();
+        CategoryModel category = (CategoryModel) bundle.getSerializable("itemCategory");
+
+
+        //
+        sliderModel = new ArrayList<>();
+        // Set IMG của 1
+        if (category != null){
+
+            sliderModel.add(new SliderModel(category.getImgCategory(),category.getNameCategory()));
+            sliderAdapter = new SliderAdapter(getContext(),sliderModel);
+            slider.setAdapter(sliderAdapter);
+
+            // Gán dữ liệu trống
+            songAdapter = new SongAdapter(getContext(),songModelArrayList);
+            layoutManager =new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+
+
+            recyclerViewPlayItem.setLayoutManager(layoutManager);
+            // Gán dữ liệu cho Song Adapter
+            songAdapter.setData(getSongs());
+            recyclerViewPlayItem.setAdapter(songAdapter);
+        }
+        else        sliderModel.add(new SliderModel(getString(R.string.url_img1),"Không có âm nhạc!"));
+
+
     }
 
     private ArrayList<SongModel> getSongs() {
@@ -87,4 +99,5 @@ public class ShowCategoryFragment extends Fragment {
         songs.add(new SongModel("4","3","3","Thiên Nam Ca",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
         return songs;
     }
+
 }

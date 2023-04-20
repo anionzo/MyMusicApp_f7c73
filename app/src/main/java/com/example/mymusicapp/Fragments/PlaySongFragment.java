@@ -71,8 +71,6 @@ public class PlaySongFragment extends Fragment {
         Bundle bundle = getActivity().getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
 
-        //String url = "https://mp3-s1-zmp3.zmdcdn.me/6ba5b39c69d88086d9c9/7989963554048552934?authen=exp=1681834641~acl=/6ba5b39c69d88086d9c9/*~hmac=baccd47e35df1ca06388100fa6ad2587&fs=MTY4MTY2MTg0MTY1MHx3ZWJWNnwxMDM1MjI5MjU3fDE3MS4yMjUdUngMjQ4Ljg1";
-
         String url ="https://mymusicappf7c73s.000webhostapp.com/Music/1111-MiiNaDREAMeRRIN9DREAMeRVietNam-8721776.mp3";
         seekBarTime.setMax(100);
 

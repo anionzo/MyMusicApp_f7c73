@@ -53,9 +53,9 @@ public class ListCategoryFragment extends Fragment {
         recyclerViewListCategory.setLayoutManager(layoutManager);
         categoryAdapter.setData(LoadListCategory());
         recyclerViewListCategory.setAdapter(categoryAdapter);
-
     }
 
+    //DATA
     public ArrayList<CategoryModel> LoadListCategory(){
         ArrayList<CategoryModel> categoryModels = new ArrayList<>();
         database = SQLiteDatabase.openOrCreateDatabase(databaseNameWithPath,null);
