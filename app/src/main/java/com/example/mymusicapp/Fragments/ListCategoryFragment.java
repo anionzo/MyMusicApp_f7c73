@@ -26,12 +26,13 @@ import java.util.ArrayList;
 public class ListCategoryFragment extends Fragment {
 
     SQLiteDatabase database = null;
+    String databaseNameWithPath = "/data/data/com.example.mymusicapp/databases/mymusicapp.db";
+
     private CategoryAdapter categoryAdapter;
     private TextView nameListCategrory;
     private RecyclerView recyclerViewListCategory;
     LinearLayoutManager layoutManager;
 
-    String databaseNameWithPath = "/data/data/com.example.mymusicapp/databases/mymusicapp.db";
     private ArrayList<CategoryModel> categoryList = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

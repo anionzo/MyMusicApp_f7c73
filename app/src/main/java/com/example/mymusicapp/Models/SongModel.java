@@ -9,8 +9,8 @@ public class SongModel implements Serializable{
     private String nameSong;
     private String linkImg;
     private String nameSinger;
-    private int linkSong;
-    public SongModel(String idSong,String idCategory, String idAlbum, String nameSong, String linkImg, String nameSinger, int linkSong) {
+    private String linkSong;
+    public SongModel(String idSong,String idCategory, String idAlbum, String nameSong, String linkImg, String nameSinger, String linkSong) {
         this.idSong = idSong;
         this.idCategory = idCategory;
         this.idAlbum = idAlbum;
@@ -20,6 +20,9 @@ public class SongModel implements Serializable{
         this.linkSong = linkSong;
     }
 
+    public SongModel() {
+
+    }
 
 
     public String getIdSong() {
@@ -56,11 +59,11 @@ public class SongModel implements Serializable{
         this.nameSong = nameSong;
     }
 
-    public int getLinkSong() {
+    public String getLinkSong() {
         return linkSong;
     }
 
-    public void setLinkSong(int linkSong) {
+    public void setLinkSong(String linkSong) {
         this.linkSong = linkSong;
     }
 

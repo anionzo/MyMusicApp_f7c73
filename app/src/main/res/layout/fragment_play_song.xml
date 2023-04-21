@@ -15,12 +15,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+
             android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_back"
-            app:tint="@color/whiteSong" />
+            app:tint="@color/whiteSong"
+            android:foreground="@drawable/selector_imageview"
+            android:clickable="true"
+            android:contentDescription="HH"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +44,10 @@
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_3cham"
-            app:tint="@color/whiteSong" />
+            app:tint="@color/whiteSong"
+            android:foreground="@drawable/selector_imageview"
+            android:clickable="true"
+            android:contentDescription="HH"/>
     </FrameLayout>
 
     <ScrollView
@@ -145,7 +152,10 @@
                     android:layout_height="30dp"
                     android:layout_gravity="end"
                     android:src="@drawable/ic_share"
-                    app:tint="@color/whiteSong" />
+                    app:tint="@color/whiteSong"
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    android:contentDescription="HH"/>
             </FrameLayout>
 
             <LinearLayout
@@ -163,7 +173,10 @@
                     android:layout_height="30dp"
                     android:layout_marginRight="40dp"
                     android:src="@drawable/ic_repeat"
-                    app:tint="@color/whiteSong" />
+                    app:tint="@color/whiteSong"
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    android:contentDescription="HH"/>
 
                 <ImageView
                     android:id="@+id/back_song"
@@ -171,14 +184,20 @@
                     android:layout_height="40dp"
                     android:layout_marginRight="30dp"
                     android:src="@drawable/ic_back_song"
-                    app:tint="@color/whiteSong" />
+                    app:tint="@color/whiteSong"
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    android:contentDescription="HH"/>
 
                 <ImageView
                     android:id="@+id/play_song"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_play"
-                    app:tint="@color/whiteSong" />
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    app:tint="@color/whiteSong"
+                    android:contentDescription="HH"/>
 
                 <ImageView
                     android:id="@+id/next_song"
@@ -186,7 +205,10 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp"
                     android:src="@drawable/ic_next_song"
-                    app:tint="@color/whiteSong" />
+                    app:tint="@color/whiteSong"
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    android:contentDescription="HH"/>
 
 
                 <ImageView
@@ -195,7 +217,10 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="40dp"
                     android:src="@drawable/ic_random"
-                    app:tint="@color/whiteSong" />
+                    app:tint="@color/whiteSong"
+                    android:foreground="@drawable/selector_imageview"
+                    android:clickable="true"
+                    android:contentDescription="HH"/>
             </LinearLayout>
 
         </LinearLayout>

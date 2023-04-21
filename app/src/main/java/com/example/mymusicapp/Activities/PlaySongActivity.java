@@ -38,7 +38,7 @@ public class PlaySongActivity extends AppCompatActivity {
 
     }
     private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction =getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(frameLayout.getId(), fragment);
         fragmentTransaction.commit();
     }

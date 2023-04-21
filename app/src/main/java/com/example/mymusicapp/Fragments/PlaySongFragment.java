@@ -36,7 +36,6 @@ public class PlaySongFragment extends Fragment {
     private TextView songTitle, songSinger, timePlay, timeEnd;
     private SeekBar seekBarTime;
     private int currentIndex = 0;
-    private Thread musicThread;
     ArrayList<SongModel> songs = new ArrayList<>();
     private MediaPlayer mediaPlayer;
 
@@ -59,28 +58,20 @@ public class PlaySongFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         View view = inflater.inflate(R.layout.fragment_play_song, container, false);
         initView(view);
-
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        songs = getSongs();
+        //songs = getSongs();
         Bundle bundle = getActivity().getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
-
-        String url ="https://mymusicappf7c73s.000webhostapp.com/Music/1111-MiiNaDREAMeRRIN9DREAMeRVietNam-8721776.mp3";
-        seekBarTime.setMax(100);
-
+        songs = (ArrayList<SongModel>) bundle.getSerializable("Songs");
         if (song != null)
         {
-            int id = Integer.parseInt( song.getIdSong());
-
-            currentIndex =Integer.parseInt( songs.get(id).getIdSong());
-            getPlaySong(songs.get(currentIndex));
-            new PlayMP3().execute(url);
+            getPlaySong(song);
+            new PlayMP3().execute(song.getLinkSong());
         }
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -96,7 +87,6 @@ public class PlaySongFragment extends Fragment {
                             mediaPlayer.start();
                             playSong.setImageResource(R.drawable.ic_stop);
                         }
-                        getPlaySong(songs.get(currentIndex));
                     }
                     break;
                     case R.id.next_song: {
@@ -114,10 +104,8 @@ public class PlaySongFragment extends Fragment {
                             mediaPlayer.stop();
                             mediaPlayer.reset();
                         }
-                        mediaPlayer = MediaPlayer.create(getContext(), songs.get(currentIndex).getLinkSong());
-                        mediaPlayer.start();
                         getPlaySong(songs.get(currentIndex));
-
+                        new PlayMP3().execute(songs.get(currentIndex).getLinkSong());
                     }
                     break;
 
@@ -135,12 +123,11 @@ public class PlaySongFragment extends Fragment {
                         {
                             mediaPlayer.stop();
                             mediaPlayer.reset();
-
                         }
-                        mediaPlayer= MediaPlayer.create(getContext(),songs.get(currentIndex).getLinkSong());
-                        mediaPlayer.start();
                         getPlaySong(songs.get(currentIndex));
+                        new PlayMP3().execute(songs.get(currentIndex).getLinkSong());
                     }break;
+
                     case R.id.back:
                     {
                         if (mediaPlayer != null)
@@ -155,7 +142,6 @@ public class PlaySongFragment extends Fragment {
 
             }
         };
-
         playSong.setOnClickListener(listener);
         nextSong.setOnClickListener(listener);
         backSong.setOnClickListener(listener);
@@ -166,54 +152,6 @@ public class PlaySongFragment extends Fragment {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
         timeEnd.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
         seekBarTime.setMax(mediaPlayer.getDuration());
-    }
-
-    private void initView(View view){
-        addPlayList = view.findViewById(R.id.add_play_list);
-        shareSong = view.findViewById(R.id.share_song);
-        back = view.findViewById(R.id.back);
-        help = view.findViewById(R.id.help);
-        imageSong = view.findViewById(R.id.image_song);
-        repeatSong = view.findViewById(R.id.repeat_song);
-        backSong = view.findViewById(R.id.back_song);
-        playSong = view.findViewById(R.id.play_song);
-        nextSong = view.findViewById(R.id.next_song);
-        randomSong =view.findViewById(R.id.random_song);
-        songTitle = view.findViewById(R.id.song_title);
-        songSinger = view.findViewById(R.id.song_singer);
-        seekBarTime = view.findViewById(R.id.seek_bar_time);
-        timeEnd = view.findViewById(R.id.time_end);
-        timePlay = view.findViewById(R.id.time_play);
-    }
-    private  ArrayList<SongModel> getSongs(){
-        ArrayList<SongModel> songs = new ArrayList<>();
-        songs.add(new SongModel("0","3","3","Hỉ",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.hi));
-        songs.add(new SongModel("1","3","3","Sao mình chưa nắm tay nhau",getString(R.string.url_img2),"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
-        songs.add(new SongModel("2","3","3","Siêu cô đơn",getString(R.string.url_img1),"Yan Nguyễn",R.raw.sieu_co_don));
-        songs.add(new SongModel("3","3","3","Thập Đẳng Ma Quân",getString(R.string.url_img3),"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
-        songs.add(new SongModel("4","3","3","Thiên Nam Ca",getString(R.string.url_img4),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
-        return songs;
-    }
-
-    private void getPlaySong(SongModel song){
-        songSinger.setText(song.getNameSinger());
-        songTitle.setText(song.getNameSong());
-
-        Glide.with(PlaySongFragment.this)
-                .load(song.getLinkImg())
-                .centerCrop()
-                .into(imageSong);
-
-        if (mediaPlayer != null){
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mediaPlayer) {
-                    seekBarTime.setMax(mediaPlayer.getDuration());
-                    mediaPlayer.start();
-                }
-            });
-        }
-
         seekBarTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -238,19 +176,28 @@ public class PlaySongFragment extends Fragment {
                 if(mediaPlayer != null){
                     int mCurrentPosition = mediaPlayer.getCurrentPosition();
                     seekBarTime.setProgress(mCurrentPosition);
-
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+                    timePlay.setText(simpleDateFormat.format(mCurrentPosition));
                 }
                 new Handler().postDelayed(this,1000);
             }
         },1000);
     }
-    class PlayMP3 extends AsyncTask<String,Void,String>{
 
+
+    private void getPlaySong(SongModel song){
+        songSinger.setText(song.getNameSinger());
+        songTitle.setText(song.getNameSong());
+        Glide.with(PlaySongFragment.this)
+                .load(song.getLinkImg())
+                .centerCrop()
+                .into(imageSong);
+    }
+    class PlayMP3 extends AsyncTask<String,Void,String>{
         @Override
         protected String doInBackground(String... strings) {
             return strings[0];
         }
-
         @Override
         protected void onPostExecute(String url) {
             super.onPostExecute(url);
@@ -268,7 +215,6 @@ public class PlaySongFragment extends Fragment {
                         mediaPlayer.reset();
                     }
                 });
-
                 mediaPlayer.setDataSource(url);
                 mediaPlayer.prepare();
                 playSong.setImageResource(R.drawable.ic_stop);
@@ -279,4 +225,22 @@ public class PlaySongFragment extends Fragment {
             TimeSong();
         }
     }
+    private void initView(View view){
+        addPlayList = view.findViewById(R.id.add_play_list);
+        shareSong = view.findViewById(R.id.share_song);
+        back = view.findViewById(R.id.back);
+        help = view.findViewById(R.id.help);
+        imageSong = view.findViewById(R.id.image_song);
+        repeatSong = view.findViewById(R.id.repeat_song);
+        backSong = view.findViewById(R.id.back_song);
+        playSong = view.findViewById(R.id.play_song);
+        nextSong = view.findViewById(R.id.next_song);
+        randomSong =view.findViewById(R.id.random_song);
+        songTitle = view.findViewById(R.id.song_title);
+        songSinger = view.findViewById(R.id.song_singer);
+        seekBarTime = view.findViewById(R.id.seek_bar_time);
+        timeEnd = view.findViewById(R.id.time_end);
+        timePlay = view.findViewById(R.id.time_play);
+    }
+
 }

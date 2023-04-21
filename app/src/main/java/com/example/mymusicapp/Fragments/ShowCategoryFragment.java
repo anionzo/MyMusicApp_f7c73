@@ -1,10 +1,13 @@
 // Hiển thị danh sách bài hát có trong category  khi được chọn
 package com.example.mymusicapp.Fragments;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +39,8 @@ public class ShowCategoryFragment extends Fragment {
     //private TextView seeMorePlaylist;
     private ArrayList<SliderModel> sliderModel;
     LinearLayoutManager layoutManager;
-
+    SQLiteDatabase database = null;
+    String databaseNameWithPath = "/data/data/com.example.mymusicapp/databases/mymusicapp.db";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,26 +82,42 @@ public class ShowCategoryFragment extends Fragment {
             // Gán dữ liệu trống
             songAdapter = new SongAdapter(getContext(),songModelArrayList);
             layoutManager =new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
-
-
             recyclerViewPlayItem.setLayoutManager(layoutManager);
+
             // Gán dữ liệu cho Song Adapter
-            songAdapter.setData(getSongs());
+            songAdapter.setData(getSongs(category.getIdCategory()));
             recyclerViewPlayItem.setAdapter(songAdapter);
         }
-        else        sliderModel.add(new SliderModel(getString(R.string.url_img1),"Không có âm nhạc!"));
+        else
+            sliderModel.add(new SliderModel(getString(R.string.url_img1),"Không có âm nhạc!"));
 
 
     }
 
-    private ArrayList<SongModel> getSongs() {
+    private ArrayList<SongModel> getSongs(String idCategory) {
         ArrayList<SongModel> songs = new ArrayList<>();
-        songs.add(new SongModel("0","3","3","Hỉ",getString(R.string.url_img3),"Thập Đẳng Ma Quân",R.raw.hi));
-        songs.add(new SongModel("1","3","3","Sao mình chưa nắm tay nhau",getString(R.string.url_img2),"Hạ 2",R.raw.sao_minh_chua_nam_tay_nhau));
-        songs.add(new SongModel("2","3","3","Siêu cô đơn",getString(R.string.url_img1),"Yan Nguyễn",R.raw.sieu_co_don));
-        songs.add(new SongModel("3","3","3","Thập Đẳng Ma Quân",getString(R.string.url_img4),"Thập đẳng Ma Quân",R.raw.thap_dang_ma_quan));
-        songs.add(new SongModel("4","3","3","Thiên Nam Ca",getString(R.string.url_img),"Thập Đẳng Ma Quân",R.raw.thien_nam_ca));
+        String selection = "idCaregory =?" ;
+        String[] selectionArgs = {idCategory};
+
+        database = SQLiteDatabase.openOrCreateDatabase(databaseNameWithPath,null);
+        Cursor c = database.query("Song", null, selection, selectionArgs, null, null, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false){
+
+            while (c.moveToNext()) {
+                String idSong = c.getString(0);
+                String idCate = c.getString(1);
+                String idAlbum = c.getString(2);
+                String nameSong = c.getString(3);
+                String linkImg = c.getString(4);
+                String nameSinger = c.getString(5);
+                String linkSong = c.getString(6);
+                SongModel song = new SongModel(idSong, idCate, idAlbum,nameSong, linkImg,nameSinger,linkSong);
+                songs.add(song);
+            }
+            c.close();
+        }
+        c.close();
         return songs;
     }
-
 }

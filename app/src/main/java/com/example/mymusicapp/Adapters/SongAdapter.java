@@ -60,6 +60,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                     Intent intent = new Intent(context, PlaySongActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("itemSong", song);
+                    bundle.putSerializable("Songs", songs);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                 }
@@ -70,8 +71,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                     Intent intent = new Intent(context, PlaySongActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("itemSong", song);
+                    bundle.putSerializable("Songs", songs);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
+
                 }
             });
 
