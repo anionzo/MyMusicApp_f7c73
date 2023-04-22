@@ -93,13 +93,11 @@ public class PlaySongFragment extends Fragment {
                         if (mediaPlayer != null) {
                             playSong.setImageResource(R.drawable.ic_stop);
                         }
-
                         if (currentIndex < songs.size() - 1) {
                             currentIndex++;
                         } else {
                             currentIndex = 0;
                         }
-
                         if (mediaPlayer.isPlaying()) {
                             mediaPlayer.stop();
                             mediaPlayer.reset();
@@ -147,6 +145,8 @@ public class PlaySongFragment extends Fragment {
         backSong.setOnClickListener(listener);
         back.setOnClickListener(listener);
     }
+
+
 
     private void TimeSong() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
