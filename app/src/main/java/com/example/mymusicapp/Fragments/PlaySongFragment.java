@@ -1,5 +1,7 @@
 package com.example.mymusicapp.Fragments;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -22,12 +25,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mymusicapp.Activities.PlaySongActivity;
+import com.example.mymusicapp.Models.MediaPlayerStatic;
 import com.example.mymusicapp.Models.SongModel;
 import com.example.mymusicapp.R;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class PlaySongFragment extends Fragment {
@@ -38,7 +43,7 @@ public class PlaySongFragment extends Fragment {
     private SeekBar seekBarTime;
     private int currentIndex = 0;
     ArrayList<SongModel> songs = new ArrayList<>();
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer ;
 
     public PlaySongFragment() {
     }
@@ -47,7 +52,6 @@ public class PlaySongFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
         }
     }
 
@@ -58,8 +62,8 @@ public class PlaySongFragment extends Fragment {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         View view = inflater.inflate(R.layout.fragment_play_song, container, false);
-        initView(view);
 
+        initView(view);
         return view;
     }
 
@@ -70,10 +74,12 @@ public class PlaySongFragment extends Fragment {
         Bundle bundle = getActivity().getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
         songs = (ArrayList<SongModel>) bundle.getSerializable("Songs");
-        if (mediaPlayer != null)
+
+        mediaPlayer = MediaPlayerStatic.mediaPlayer;
+        if (mediaPlayer != null && mediaPlayer.isPlaying())
         {
             mediaPlayer.stop();
-            mediaPlayer.release();
+            mediaPlayer.reset();
         }
         if (song != null)
         {
@@ -97,14 +103,14 @@ public class PlaySongFragment extends Fragment {
                     }
                     break;
                     case R.id.next_song: {
-                        if (mediaPlayer != null) {
+                        if (mediaPlayer != null)
                             playSong.setImageResource(R.drawable.ic_stop);
-                        }
-                        if (currentIndex < songs.size() - 1) {
+
+                        if (currentIndex < songs.size() - 1)
                             currentIndex++;
-                        } else {
+                         else
                             currentIndex = 0;
-                        }
+
                         if (mediaPlayer.isPlaying()) {
                             mediaPlayer.stop();
                             mediaPlayer.reset();
@@ -116,13 +122,11 @@ public class PlaySongFragment extends Fragment {
 
                     case R.id.back_song:
                     {
-                        if(mediaPlayer != null ){
+                        if(mediaPlayer != null )
                             playSong.setImageResource(R.drawable.ic_stop);
-                        }
+
                         if(currentIndex > 0)
-                        {
                             currentIndex --;
-                        }
                         else currentIndex = songs.size() -1;
                         if (mediaPlayer.isPlaying())
                         {
@@ -138,35 +142,54 @@ public class PlaySongFragment extends Fragment {
                         if (mediaPlayer != null)
                             mediaPlayer.stop();
                         mediaPlayer = null;
+                        MediaPlayerStatic.mediaPlayer = null;
                         getActivity().finish();
+
+                    }break;
+                    case R.id.repeat_song: {
+                        Drawable drawable = repeatSong.getDrawable();
+                        if (mediaPlayer == null)
+                            return;
+
+                        if (mediaPlayer.isLooping())
+                        {
+                            mediaPlayer.setLooping(false);
+                            drawable.setColorFilter(ContextCompat.getColor(getContext(), R.color.whiteSong), PorterDuff.Mode.SRC_IN);
+                            repeatSong.setImageDrawable(drawable);
+                        }
+                       else  {
+                            mediaPlayer.setLooping(true);
+                            drawable.setColorFilter(ContextCompat.getColor(getContext(), R.color.starColor), PorterDuff.Mode.SRC_IN);
+                            repeatSong.setImageDrawable(drawable);
+                        }
+                    }break;
+                    case  R.id.random_song:
+                    {
+
 
                     }break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + view.getId());
                 }
-
             }
         };
         playSong.setOnClickListener(listener);
         nextSong.setOnClickListener(listener);
         backSong.setOnClickListener(listener);
         back.setOnClickListener(listener);
+        repeatSong.setOnClickListener(listener);
 
     }
-
-
-
 
     private void TimeSong() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
         timeEnd.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
+
         seekBarTime.setMax(mediaPlayer.getDuration());
         seekBarTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if(b){
-                    mediaPlayer.seekTo(i);
-                }
+                if(b){ mediaPlayer.seekTo(i); }
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -193,7 +216,6 @@ public class PlaySongFragment extends Fragment {
         },1000);
     }
 
-
     private void getPlaySong(SongModel song){
         songSinger.setText(song.getNameSinger());
         songTitle.setText(song.getNameSong());
@@ -211,7 +233,7 @@ public class PlaySongFragment extends Fragment {
         protected void onPostExecute(String url) {
             super.onPostExecute(url);
             try {
-                mediaPlayer = new MediaPlayer();
+                 mediaPlayer = new MediaPlayer();
                 AudioAttributes audioAttributes = new AudioAttributes.Builder()
                         .setUsage(AudioAttributes.USAGE_MEDIA)
                         .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -222,6 +244,7 @@ public class PlaySongFragment extends Fragment {
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         mediaPlayer.stop();
                         mediaPlayer.reset();
+                        nextSong.performClick();
                     }
                 });
                 mediaPlayer.setDataSource(url);
@@ -231,6 +254,7 @@ public class PlaySongFragment extends Fragment {
                 throw new RuntimeException(e);
             }
             mediaPlayer.start();
+            MediaPlayerStatic.mediaPlayer = mediaPlayer;
             TimeSong();
         }
     }
@@ -252,5 +276,4 @@ public class PlaySongFragment extends Fragment {
         timeEnd = view.findViewById(R.id.time_end);
         timePlay = view.findViewById(R.id.time_play);
     }
-
 }
