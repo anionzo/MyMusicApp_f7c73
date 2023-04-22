@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // kết thúc Activity và thoát ứng dụng
                 finishAffinity();
-
             }
         });
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {

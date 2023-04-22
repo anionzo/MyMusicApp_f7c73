@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.os.Parcelable;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,7 @@ public class PlaySongFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         View view = inflater.inflate(R.layout.fragment_play_song, container, false);
         initView(view);
+
         return view;
     }
 
@@ -68,6 +70,11 @@ public class PlaySongFragment extends Fragment {
         Bundle bundle = getActivity().getIntent().getExtras();
         SongModel song = (SongModel) bundle.getSerializable("itemSong");
         songs = (ArrayList<SongModel>) bundle.getSerializable("Songs");
+        if (mediaPlayer != null)
+        {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
         if (song != null)
         {
             getPlaySong(song);
@@ -144,7 +151,9 @@ public class PlaySongFragment extends Fragment {
         nextSong.setOnClickListener(listener);
         backSong.setOnClickListener(listener);
         back.setOnClickListener(listener);
+
     }
+
 
 
 
@@ -225,6 +234,7 @@ public class PlaySongFragment extends Fragment {
             TimeSong();
         }
     }
+
     private void initView(View view){
         addPlayList = view.findViewById(R.id.add_play_list);
         shareSong = view.findViewById(R.id.share_song);
