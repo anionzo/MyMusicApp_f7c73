@@ -86,7 +86,6 @@ public class PlaySongFragment extends Fragment {
             getPlaySong(song);
             new PlayMP3().execute(song.getLinkSong());
         }
-
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +104,6 @@ public class PlaySongFragment extends Fragment {
                     case R.id.next_song: {
                         if (mediaPlayer != null)
                             playSong.setImageResource(R.drawable.ic_stop);
-
                         if (currentIndex < songs.size() - 1)
                             currentIndex++;
                          else
@@ -124,7 +122,6 @@ public class PlaySongFragment extends Fragment {
                     {
                         if(mediaPlayer != null )
                             playSong.setImageResource(R.drawable.ic_stop);
-
                         if(currentIndex > 0)
                             currentIndex --;
                         else currentIndex = songs.size() -1;
@@ -144,13 +141,11 @@ public class PlaySongFragment extends Fragment {
                         mediaPlayer = null;
                         MediaPlayerStatic.mediaPlayer = null;
                         getActivity().finish();
-
                     }break;
                     case R.id.repeat_song: {
                         Drawable drawable = repeatSong.getDrawable();
                         if (mediaPlayer == null)
                             return;
-
                         if (mediaPlayer.isLooping())
                         {
                             mediaPlayer.setLooping(false);
@@ -165,7 +160,6 @@ public class PlaySongFragment extends Fragment {
                     }break;
                     case  R.id.random_song:
                     {
-
 
                     }break;
                     default:

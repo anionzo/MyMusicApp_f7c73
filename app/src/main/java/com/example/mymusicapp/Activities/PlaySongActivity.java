@@ -35,7 +35,6 @@ public class PlaySongActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_song);
         frameLayout = findViewById(R.id.play_song_frame_layout);
         setFragment(new PlaySongFragment());
-
     }
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

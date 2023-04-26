@@ -54,7 +54,6 @@ public class ShowCategoryAdapter extends RecyclerView.Adapter<ShowCategoryAdapte
             slider       = itemView.findViewById(R.id.slider);
             listPlayItem = itemView.findViewById(R.id.list_play_item);
             //seeMorePlaylist = itemView.findViewById(R.id.see_more_playlists);
-
         }
     }
 }
