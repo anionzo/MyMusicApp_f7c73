@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // xử lý tại đây
-        // ví dụ: hiển thị một dialog hỏi người dùng có muốn thoát không
+        //  hiển thị một dialog hỏi người dùng có muốn thoát không
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Thoát ứng dụng");
         builder.setMessage("Bạn có chắc chắn muốn thoát không?");

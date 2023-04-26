@@ -19,17 +19,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class SplashActivity extends AppCompatActivity {
-
     private static final String DATABASE_NAME = "mymusicapp.db";
     Handler handler;
     private FirebaseAuth mAuth;
     private String DB_PATH_SUFFIX ="/databases/";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_splash);
+        // Copy database vào ứng dụng
         processCopy();
 
         handler = new Handler();
@@ -41,15 +39,16 @@ public class SplashActivity extends AppCompatActivity {
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 if(currentUser != null){
                     intent = new Intent(SplashActivity.this, MainActivity.class);
+                    finish();
                 }else {
                     intent = new Intent(SplashActivity.this, RegisterActivity.class);
+                    finish();
                 }
-
                 startActivity(intent);
             }
         }, 3000);
-
     }
+
     private void processCopy() {
         File dbFile = getDatabasePath(DATABASE_NAME);
         if (!dbFile.exists())
