@@ -172,7 +172,6 @@ public class PlaySongFragment extends Fragment {
         backSong.setOnClickListener(listener);
         back.setOnClickListener(listener);
         repeatSong.setOnClickListener(listener);
-
     }
 
     private void TimeSong() {

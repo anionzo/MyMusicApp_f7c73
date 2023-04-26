@@ -34,6 +34,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         notifyDataSetChanged();
 
     }
+    // Trong lớp SongAdapter
+    public void clearData() {
+        songs.clear();
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -74,7 +80,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
                     bundle.putSerializable("Songs", songs);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
-
                 }
             });
 

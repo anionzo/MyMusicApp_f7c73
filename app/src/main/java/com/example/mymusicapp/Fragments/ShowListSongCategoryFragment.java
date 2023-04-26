@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +27,7 @@ import com.example.mymusicapp.R;
 import java.util.ArrayList;
 
 
-public class ShowCategoryFragment extends Fragment {
+public class ShowListSongCategoryFragment extends Fragment {
 
     private TextView nameListPlay;
     private RecyclerView recyclerViewPlayItem;
@@ -55,12 +54,8 @@ public class ShowCategoryFragment extends Fragment {
         nameListPlay = view.findViewById(R.id.name_list_play);
         recyclerViewPlayItem = view.findViewById(R.id.list_play_item);
         slider =view.findViewById(R.id.slider);
-
-
         return view;
     }
-
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -90,8 +85,6 @@ public class ShowCategoryFragment extends Fragment {
         }
         else
             sliderModel.add(new SliderModel(getString(R.string.url_img1),"Không có âm nhạc!"));
-
-
     }
 
     private ArrayList<SongModel> getSongs(String idCategory) {

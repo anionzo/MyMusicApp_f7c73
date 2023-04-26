@@ -28,12 +28,16 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/edittext_background"
         android:hint="Search"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
+        android:lines="1"
         android:padding="9dp"
         android:textColor="@color/hintEditText"
         android:textColorHint="@color/hintEditText"
         app:layout_constraintTop_toBottomOf="@id/txthead"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_list_song"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/search_song"
