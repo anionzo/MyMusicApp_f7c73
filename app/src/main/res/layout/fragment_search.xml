@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.SearchFragment">
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/txthead"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tim_kiem_bh"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/white"/>
-    <EditText
-        android:id="@+id/search_song"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Search"
-        android:inputType="text"
-        android:imeOptions="actionSearch"
-        android:lines="1"
-        android:padding="9dp"
-        android:textColor="@color/hintEditText"
-        android:textColorHint="@color/hintEditText"
-        app:layout_constraintTop_toBottomOf="@id/txthead"/>
+        app:backgroundTint="@null"
+        android:background="@color/black"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_search_song"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_list_song"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_song"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@+id/layout_toolbar"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/notification"
+        android:visibility="gone"
+        android:gravity="center"
+        app:circularflow_viewCenter="@id/search_list_song"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Không có dữ liệu bài hát!"
+        android:padding="9dp"
+        android:textColor="@color/hintEditText"
+        android:textSize="20sp"
+        />
+</RelativeLayout>
