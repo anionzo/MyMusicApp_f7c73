@@ -17,12 +17,7 @@ import com.example.mymusicapp.Models.SliderModel;
 import com.example.mymusicapp.R;
 import com.example.mymusicapp.Utils.SliderTimer;
 import com.google.android.material.tabs.TabLayout;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
+
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -55,10 +50,11 @@ public class HomeFragment extends Fragment {
         timer = new Timer();
 
         slidersModelList = new ArrayList<>();
-        slidersModelList.add(new SliderModel(R.drawable.poster1, "Danh sách nhạc #Tes"));
-        slidersModelList.add(new SliderModel(R.drawable.poster2, "Danh sách nhạc #2"));
-        slidersModelList.add(new SliderModel(R.drawable.poster3, "Danh sách nhạc #3"));
-        slidersModelList.add(new SliderModel(R.drawable.poster4, "Danh sách nhạc #4"));
+
+        slidersModelList.add(new SliderModel(getString(R.string.url_img), "Danh sách nhạc #Tes"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img1), "Danh sách nhạc #2"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img2), "Danh sách nhạc #3"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img3), "Danh sách nhạc #4"));
 
         sliderAdapter = new SliderAdapter(getContext(),slidersModelList);
         slider.setAdapter(sliderAdapter);

@@ -40,10 +40,6 @@ public class ResetPasswordFragment extends Fragment {
     private ProgressBar resetPassProgressBar;
     private FirebaseAuth mAuth;
 
-    public ResetPasswordFragment() {
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

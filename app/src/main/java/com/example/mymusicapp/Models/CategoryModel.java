@@ -1,6 +1,8 @@
 package com.example.mymusicapp.Models;
 
-public class CategoryModel {
+import java.io.Serializable;
+
+public class CategoryModel implements Serializable {
     // Thể loại
     private String idCategory;
     private String idTopic;
@@ -12,6 +14,10 @@ public class CategoryModel {
         this.idTopic = idTopic;
         this.nameCategory = nameCategory;
         this.imgCategory = imgCategory;
+    }
+
+    public CategoryModel() {
+
     }
 
     public String getIdCategory() {

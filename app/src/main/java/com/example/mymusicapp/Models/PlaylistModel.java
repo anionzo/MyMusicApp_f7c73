@@ -7,24 +7,10 @@ public class PlaylistModel {
     private String namePlayList;
     private String imgPlayList;
 
-
-    private ArrayList<SongModel> songLists;
-
-
-
-    public PlaylistModel(String idPlayList, String namePlayList, String imgPlayList, ArrayList<SongModel> songLists) {
+    public PlaylistModel(String idPlayList, String namePlayList, String imgPlayList) {
         this.idPlayList = idPlayList;
         this.namePlayList = namePlayList;
         this.imgPlayList = imgPlayList;
-        this.songLists = songLists;
-    }
-
-    public ArrayList<SongModel> getSongLists() {
-        return songLists;
-    }
-
-    public void setSongLists(ArrayList<SongModel> songLists) {
-        this.songLists = songLists;
     }
 
     public String getIdPlayList() {

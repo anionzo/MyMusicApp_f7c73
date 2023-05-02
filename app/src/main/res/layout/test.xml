@@ -14,11 +14,8 @@ android:layout_gravity="center">
     app:cardCornerRadius="150dp">
 
 
-    <ImageView
-        android:id="@+id/image_song"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_app_icon" />
+
+
 
 </androidx.cardview.widget.CardView>
 
