@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment {
         txtnotification = view.findViewById(R.id.notification);
         recyclerViewSearchListSong = view.findViewById(R.id.search_list_song);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle("Tìn kiếm");
         setHasOptionsMenu(true);
         return view;
     }
@@ -56,9 +56,9 @@ public class SearchFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search_view,menu );
         MenuItem menuItem = menu.findItem(R.id.menu_search);
+
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

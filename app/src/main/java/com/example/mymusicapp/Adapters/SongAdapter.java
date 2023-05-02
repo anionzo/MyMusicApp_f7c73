@@ -29,16 +29,15 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         this.context = context;
         this.songs = songs;
     }
+    public  void  cleanData(){
+        this.songs.clear();
+        notifyDataSetChanged();
+    }
     public void setData(ArrayList<SongModel> items) {
         this.songs = items;
         notifyDataSetChanged();
-
     }
     // Trong lớp SongAdapter
-    public void clearData() {
-        songs.clear();
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -85,8 +84,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
         }
     }
-
-
 
     @Override
     public int getItemCount() {

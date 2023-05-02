@@ -4,6 +4,10 @@ package com.example.mymusicapp.Fragments;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,11 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.mymusicapp.Adapters.SliderAdapter;
 import com.example.mymusicapp.Adapters.SongAdapter;
@@ -64,8 +63,6 @@ public class ShowListSongCategoryFragment extends Fragment {
         Bundle bundle = getActivity().getIntent().getExtras();
         CategoryModel category = (CategoryModel) bundle.getSerializable("itemCategory");
 
-
-        //
         sliderModel = new ArrayList<>();
         // Set IMG của 1
         if (category != null){
@@ -79,7 +76,8 @@ public class ShowListSongCategoryFragment extends Fragment {
             layoutManager =new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
             recyclerViewPlayItem.setLayoutManager(layoutManager);
 
-            // Gán dữ liệu cho Song Adapter
+            // Gán dữ liệu cho Song Adapter'
+            songAdapter.cleanData();
             songAdapter.setData(getSongs(category.getIdCategory()));
             recyclerViewPlayItem.setAdapter(songAdapter);
         }
