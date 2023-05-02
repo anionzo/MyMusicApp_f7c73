@@ -3,7 +3,6 @@ package com.example.mymusicapp.Fragments;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -21,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mymusicapp.Adapters.SongAdapter;
+import com.example.mymusicapp.Adapters.SearchSongAdapter;
 import com.example.mymusicapp.Models.SongModel;
 import com.example.mymusicapp.R;
 
@@ -32,7 +30,7 @@ public class SearchFragment extends Fragment {
 
     private TextView txtnotification;
     private RecyclerView recyclerViewSearchListSong;
-    private  SongAdapter songAdapter ;
+    private SearchSongAdapter searchSongAdapter ;
     private LinearLayoutManager layoutManager;
     private Toolbar toolbar;
     private ArrayList<SongModel> songModelArrayList = new ArrayList<>();
@@ -62,8 +60,7 @@ public class SearchFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Log.d("BBB", s);
-
+                SearchTuKhoaSong(s);
                 return true;
             }
 
@@ -75,24 +72,21 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        songAdapter = new SongAdapter(getContext(),songModelArrayList);
-        layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-        recyclerViewSearchListSong.setLayoutManager(layoutManager);
-        recyclerViewSearchListSong.setAdapter(songAdapter);
-
-//        if (!TextUtils.isEmpty(searchSong.getText().toString())){
-//            // Gán dữ liệu cho Song Adapter
-//            songAdapter.clearData();
-//            songAdapter.setData(getSongs(searchSong.getText().toString()));
-//            recyclerViewSearchListSong.setAdapter(songAdapter);
-//        }
+    private  void SearchTuKhoaSong(String query){
+        songModelArrayList = getSongs(query);
+        if(songModelArrayList.size() > 0){
+            searchSongAdapter = new SearchSongAdapter(getContext(),songModelArrayList);
+            layoutManager = new LinearLayoutManager(getActivity());
+            recyclerViewSearchListSong.setLayoutManager(layoutManager);
+            recyclerViewSearchListSong.setAdapter(searchSongAdapter);
+            txtnotification.setVisibility(View.GONE);
+            recyclerViewSearchListSong.setVisibility(View.VISIBLE);
+        } else {
+            recyclerViewSearchListSong.setVisibility(View.GONE);
+            txtnotification.setVisibility(View.VISIBLE);
+        }
 
     }
-
     private ArrayList<SongModel> getSongs(String name) {
         ArrayList<SongModel> songs = new ArrayList<>();
         database = SQLiteDatabase.openOrCreateDatabase(databaseNameWithPath,null);
@@ -108,6 +102,7 @@ public class SearchFragment extends Fragment {
                 String linkSong = c.getString(6);
                 SongModel song = new SongModel(idSong, idCate, idAlbum,nameSong, linkImg,nameSinger,linkSong);
                 songs.add(song);
+            c.moveToNext();
         }
         c.close();
         return songs;

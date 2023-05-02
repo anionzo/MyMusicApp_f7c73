@@ -2,6 +2,7 @@ package com.example.mymusicapp.Fragments;
 
 import android.Manifest;
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -278,6 +279,9 @@ public class PlaySongFragment extends Fragment {
         }
 
         MediaSessionCompat mediaSession = new MediaSessionCompat(getContext(), "tag");
+        PendingIntent previousPendingIntent = null;
+        PendingIntent pausePendingIntent = null;
+        PendingIntent nextPendingIntent = null;
         Notification notification = new NotificationCompat.Builder(getContext(), com.example.mymusicapp.Services.Notification.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_app_icon)
                 .setSubText("Mi Miêu")
@@ -286,11 +290,12 @@ public class PlaySongFragment extends Fragment {
                 .setLargeIcon(bitmap)
                 .setPriority(NotificationCompat.PRIORITY_MAX) // Đặt độ ưu tiên cao nhất
                 .setOngoing(true) // Đặt thông báo là "ongoing" để ngăn người dùng có thể xóa thông báo
-                .addAction(R.drawable.ic_back_song, "Previous", null) // #0
-                .addAction(R.drawable.ic_stop, "Pause", null)  // #1
-                .addAction(R.drawable.ic_next_song, "Next", null)     // #2
+                .addAction(R.drawable.ic_back_song, "Previous", previousPendingIntent) // #0
+                .addAction(R.drawable.ic_stop, "Pause", pausePendingIntent)  // #1
+                .addAction(R.drawable.ic_next_song, "Next", nextPendingIntent)     // #2
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
-                        .setMediaSession(mediaSession.getSessionToken()))
+                        .setMediaSession(mediaSession.getSessionToken())
+                        .setShowActionsInCompactView(0, 1, 2))
                 .build();
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
