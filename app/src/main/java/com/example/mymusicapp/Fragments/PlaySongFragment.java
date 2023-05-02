@@ -93,9 +93,12 @@ public class PlaySongFragment extends Fragment {
             new PlayMP3().execute(song.getLinkSong());
         }
 
+        if(songs.size()  > 1){
+            nextSong.setOnClickListener(listener);
+            backSong.setOnClickListener(listener);
+        }
         playSong.setOnClickListener(listener);
-        nextSong.setOnClickListener(listener);
-        backSong.setOnClickListener(listener);
+
         back.setOnClickListener(listener);
         repeatSong.setOnClickListener(listener);
         MediaPlayerSingleton.getInstance().setMediaPlayer(mediaPlayer);
@@ -248,7 +251,10 @@ public class PlaySongFragment extends Fragment {
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         mediaPlayer.stop();
                         mediaPlayer.reset();
-                        nextSong.performClick();
+                        if(songs.size() > 1 ){
+                            nextSong.performClick();
+                        }
+
                     }
                 });
 
