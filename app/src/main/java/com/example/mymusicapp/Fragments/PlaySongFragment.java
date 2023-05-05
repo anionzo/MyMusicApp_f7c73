@@ -144,7 +144,7 @@ public class PlaySongFragment extends Fragment {
                 break;
                 case R.id.next_song: {
                     if (mediaPlayer.isLooping()){
-                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(songs.size() > 0){
@@ -188,7 +188,7 @@ public class PlaySongFragment extends Fragment {
 
                 case R.id.back_song: {
                     if (mediaPlayer.isLooping()){
-                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(songs.size() > 0){
