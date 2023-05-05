@@ -62,8 +62,7 @@ public class UserFragment extends Fragment {
 
         return view;
     }
-
-
+    // get user fibase
     public void User(final UserModel.OnUserModelCompleteListener listener) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
