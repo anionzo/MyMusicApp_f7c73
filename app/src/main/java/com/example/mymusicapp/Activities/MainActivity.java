@@ -3,19 +3,14 @@ package com.example.mymusicapp.Activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.mymusicapp.API.BaseAPIService;
 import com.example.mymusicapp.Fragments.MenuFragment;
 import com.example.mymusicapp.R;
-import com.example.mymusicapp.dto.Top100DTO;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fragmentMenu = findViewById(R.id.main_frame_layout);
         setFragment(new MenuFragment());
-        ArrayList<Top100DTO> b = BaseAPIService.getInstance().getTop100List();
-        Log.d("API",b.toString());
+//        ArrayList<Top100DTO> b = BaseAPIService.getInstance().getTop100List();
+//        Log.d("API",b.toString());
     }
 
     private void setFragment(Fragment fragment) {
