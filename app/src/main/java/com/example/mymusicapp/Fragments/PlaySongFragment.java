@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -142,19 +143,18 @@ public class PlaySongFragment extends Fragment {
                 }
                 break;
                 case R.id.next_song: {
+                    if (mediaPlayer.isLooping()){
+                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     if(songs.size() > 0){
                         if (mediaPlayer.isPlaying() || mediaPlayer != null){
                             mediaPlayer.stop();
                         }
+
                         if(currentIndex < songs.size() - 1){
                             playSong.setImageResource(R.drawable.ic_stop);
                             currentIndex++;
-                            if(repeat == true){
-                                if (currentIndex == 0){
-                                    currentIndex = songs.size();
-                                }
-                                currentIndex -=1;
-                            }
                             if (checkrandom == true){
                                 Random random = new Random();
                                 int r = random.nextInt(songs.size());
@@ -187,18 +187,20 @@ public class PlaySongFragment extends Fragment {
                 break;
 
                 case R.id.back_song: {
+                    if (mediaPlayer.isLooping()){
+                        Toast.makeText(getContext(), "Vui lòng nhấn tắt lặp lại!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     if(songs.size() > 0){
                         if (mediaPlayer.isPlaying() || mediaPlayer != null){
                             mediaPlayer.stop();
                         }
+
                         if(currentIndex < songs.size() - 1){
                             playSong.setImageResource(R.drawable.ic_stop);
                             currentIndex--;
                             if (currentIndex < 0){
                                 currentIndex = songs.size() -1;
-                            }
-                            if(repeat == true){
-                                currentIndex +=1;
                             }
                             if (checkrandom == true){
                                 Random random = new Random();
@@ -248,15 +250,16 @@ public class PlaySongFragment extends Fragment {
                         }
                         drawableRe.setColorFilter(ContextCompat.getColor(getContext(), R.color.starColor), PorterDuff.Mode.SRC_IN);
                         repeatSong.setImageDrawable(drawableRe);
+                        mediaPlayer.setLooping(true);
                         repeat = true;
                     }
                     else {
                         drawableRe.setColorFilter(ContextCompat.getColor(getContext(), R.color.whiteSong), PorterDuff.Mode.SRC_IN);
                         repeatSong.setImageDrawable(drawableRe);
                         repeat = false;
+                        mediaPlayer.setLooping(false);
                     }
                     //--
-
 //                    if (mediaPlayer.isLooping()) {
 //                        mediaPlayer.setLooping(false);
 //                        drawable.setColorFilter(ContextCompat.getColor(getContext(), R.color.whiteSong), PorterDuff.Mode.SRC_IN);
