@@ -1,23 +1,18 @@
 package com.example.mymusicapp.Fragments;
 
-import android.Manifest;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import com.example.mymusicapp.Activities.MainActivity;
 import com.example.mymusicapp.Adapters.SliderAdapter;
 import com.example.mymusicapp.Models.SliderModel;
 import com.example.mymusicapp.R;
 import com.example.mymusicapp.Utils.SliderTimer;
 import com.google.android.material.tabs.TabLayout;
-
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -51,10 +46,10 @@ public class HomeFragment extends Fragment {
 
         slidersModelList = new ArrayList<>();
 
-        slidersModelList.add(new SliderModel(getString(R.string.url_img), "Danh sách nhạc #Tes"));
-        slidersModelList.add(new SliderModel(getString(R.string.url_img1), "Danh sách nhạc #2"));
-        slidersModelList.add(new SliderModel(getString(R.string.url_img2), "Danh sách nhạc #3"));
-        slidersModelList.add(new SliderModel(getString(R.string.url_img3), "Danh sách nhạc #4"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img), "Đôi Mắt"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img1), "Vĩnh Hằng"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img2), "Vũ Nhạc"));
+        slidersModelList.add(new SliderModel(getString(R.string.url_img3), "Mèo Mướp"));
 
         sliderAdapter = new SliderAdapter(getContext(),slidersModelList);
         slider.setAdapter(sliderAdapter);

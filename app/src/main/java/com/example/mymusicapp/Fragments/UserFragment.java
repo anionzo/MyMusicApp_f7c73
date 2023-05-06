@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mymusicapp.Activities.MainActivity;
 import com.example.mymusicapp.Activities.RegisterActivity;
+import com.example.mymusicapp.Activities.ShowPlayListActivity;
 import com.example.mymusicapp.Models.UserModel;
 import com.example.mymusicapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -103,6 +104,14 @@ public class UserFragment extends Fragment {
                 TxtName.setText(userModel.getUserName());
                 TxtEmail.setText("Email: " + userModel.getEmail());
                 Log.d("NAME Test", "User Name: " + userModel.getUserName() + ", Email Id: " + userModel.getEmail());
+            }
+        });
+        PlayList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ShowPlayListActivity.class);
+                startActivity(intent);
+
             }
         });
         LogOut.setOnClickListener(new View.OnClickListener() {
