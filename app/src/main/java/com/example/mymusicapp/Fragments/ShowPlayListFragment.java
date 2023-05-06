@@ -25,7 +25,7 @@ public class ShowPlayListFragment extends Fragment {
     TextView text_name;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
-    ArrayList<SongModel> songs;
+    ArrayList<SongModel> songs = new ArrayList<>();
     SongAdapter songAdapter;
     SQLiteDatabase database = null;
     String databaseNameWithPath = "/data/data/com.example.mymusicapp/databases/mymusicapp.db";
