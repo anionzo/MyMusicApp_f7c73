@@ -1,4 +1,4 @@
-package com.example.mymusicapp.Services;
+package com.example.mymusicapp.Models.Services;
 
 import android.app.Application;
 import android.app.NotificationChannel;

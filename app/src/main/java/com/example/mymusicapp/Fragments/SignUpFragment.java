@@ -164,6 +164,7 @@ public class SignUpFragment extends Fragment {
                                     Map<String, Object> user = new HashMap<>();
                                     user.put("userName",userName.getText().toString());
                                     user.put("emailId",email.getText().toString());
+                                    user.put("bio","");
                                     db.collection("users")
                                             .document(task.getResult().getUser().getUid())
                                             .set(user)

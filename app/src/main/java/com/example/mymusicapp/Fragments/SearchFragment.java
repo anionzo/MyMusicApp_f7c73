@@ -45,7 +45,7 @@ public class SearchFragment extends Fragment {
         txtnotification = view.findViewById(R.id.notification);
         recyclerViewSearchListSong = view.findViewById(R.id.search_list_song);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setTitle("Tìn kiếm");
+        toolbar.setTitle("Nhấn nút để tìm kiếm");
         setHasOptionsMenu(true);
 
         return view;

@@ -1,6 +1,10 @@
 package com.example.mymusicapp.Models;
 
-public class TopicModel {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class TopicModel  implements Serializable {
     private String idTopic;
     private String nameTopic;
     private String imgTopic;
@@ -9,6 +13,12 @@ public class TopicModel {
         this.idTopic = idTopic;
         this.nameTopic = nameTopic;
         this.imgTopic = imgTopic;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Topic" + idTopic + " - " + nameTopic + " - " + imgTopic;
     }
 
     public String getIdTopic() {

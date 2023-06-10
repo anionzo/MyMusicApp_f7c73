@@ -408,7 +408,7 @@ public class PlaySongFragment extends Fragment {
         PendingIntent previousPendingIntent = null;
         PendingIntent pausePendingIntent = null;
         PendingIntent nextPendingIntent = null;
-        Notification notification = new NotificationCompat.Builder(getContext(), com.example.mymusicapp.Services.Notification.CHANNEL_ID)
+        Notification notification = new NotificationCompat.Builder(getContext(), com.example.mymusicapp.Models.Services.Notification.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_app_icon)
                 .setSubText("Mi Miêu")
                 .setContentTitle("Phát: "+song.getNameSong())

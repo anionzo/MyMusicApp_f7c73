@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".Services.Notification"
+        android:name=".Models.Services.Notification"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,6 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMusicApp"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".API.ActivityFire.ShowListSongActivity"
+            android:exported="false" />
+        <activity
+            android:name=".API.ActivityFire.ChiTietCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ShowLisrCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".API.ActivityFire.TopicActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.ShowPlayListActivity"
             android:exported="false" />

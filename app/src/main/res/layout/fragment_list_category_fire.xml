@@ -3,29 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ShowListSongCategoryFragment">
+    tools:context=".Fragments.ListCategoryFragment">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
-            android:id="@+id/name_list_play"
+            android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"/>
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:contentDescription="Sider Quảng cáo!"
-            android:layout_below="@id/name_list_play"
+            android:text="Danh Sách Loại"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/whiteSong"/>
 
-            />
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_play_item"
-            android:layout_below="@id/slider"
+            android:layout_marginTop="30dp"
+            android:id="@+id/list_category_fire"
+            android:layout_below="@+id/no"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 </FrameLayout>
