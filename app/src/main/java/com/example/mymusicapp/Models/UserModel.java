@@ -11,6 +11,20 @@ public class UserModel {
         this.pass = pass;
     }
 
+    public UserModel(UserModel userModel) {
+        this.userName = userModel.userName;
+        this.email = userModel.email;
+        this.pass = userModel.pass;
+
+    }
+
+    public UserModel() {
+
+    }
+    public interface OnUserModelCompleteListener {
+        void onComplete(UserModel userModel);
+    }
+
     public String getUserName() {
         return userName;
     }

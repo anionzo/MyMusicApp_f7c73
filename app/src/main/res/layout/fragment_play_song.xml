@@ -144,7 +144,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="start"
-                    android:src="@drawable/heart"
+                    android:src="@drawable/ic_heart"
                     app:tint="@color/whiteSong" />
 
                 <ImageView

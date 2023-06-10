@@ -14,13 +14,14 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content">
        <RelativeLayout
+           android:id="@+id/layout_category"
            android:layout_width="380dp"
            android:layout_height="wrap_content">
 
            <ImageView
                android:id="@+id/category_img"
                android:layout_width="wrap_content"
-               android:layout_height="120dp"
+               android:layout_height="150dp"
                android:scaleType="centerCrop"
                app:srcCompat="@drawable/poster1" />
 

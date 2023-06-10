@@ -20,6 +20,16 @@ public class CategoryModel implements Serializable {
 
     }
 
+    @Override
+    public String toString() {
+        return "CategoryModel{" +
+                "idCategory='" + idCategory + '\'' +
+                ", idTopic='" + idTopic + '\'' +
+                ", nameCategory='" + nameCategory + '\'' +
+                ", imgCategory='" + imgCategory + '\'' +
+                '}';
+    }
+
     public String getIdCategory() {
         return idCategory;
     }

@@ -1,13 +1,12 @@
 package com.example.mymusicapp.Fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.mymusicapp.Adapters.MenuAdapter;
 import com.example.mymusicapp.R;
@@ -45,11 +44,9 @@ public class MenuFragment extends Fragment {
         fragmentArrayList.add(new SearchFragment());
         fragmentArrayList.add(new ListCategoryFragment());
         fragmentArrayList.add(new UserFragment());
-        fragmentArrayList.add(new SearchFragment());
 
-        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_person, R.drawable.ic_folder};
+        imageList =new int[]{R.drawable.ic_home,R.drawable.ic_search,R.drawable.ic_list,R.drawable.ic_person};
         // khai báo nhưng không sài Có thể thêm để xem thử
-        arrayList.add("");
         arrayList.add("");
         arrayList.add("");
         arrayList.add("");

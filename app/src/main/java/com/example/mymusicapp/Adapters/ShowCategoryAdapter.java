@@ -49,6 +49,7 @@ public class ShowCategoryAdapter extends RecyclerView.Adapter<ShowCategoryAdapte
         //TextView seeMorePlaylist;
 
         public ViewHolder(@NonNull View itemView) {
+
             super(itemView);
             nameListPlay = itemView.findViewById(R.id.name_list_play);
             slider       = itemView.findViewById(R.id.slider);

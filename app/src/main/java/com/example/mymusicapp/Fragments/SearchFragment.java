@@ -45,8 +45,9 @@ public class SearchFragment extends Fragment {
         txtnotification = view.findViewById(R.id.notification);
         recyclerViewSearchListSong = view.findViewById(R.id.search_list_song);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setTitle("Tìn kiếm");
+        toolbar.setTitle("Nhấn nút để tìm kiếm");
         setHasOptionsMenu(true);
+
         return view;
     }
 
@@ -73,6 +74,7 @@ public class SearchFragment extends Fragment {
     }
 
     private  void SearchTuKhoaSong(String query){
+        query = query.trim();
         songModelArrayList = getSongs(query);
         if(songModelArrayList.size() > 0){
             searchSongAdapter = new SearchSongAdapter(getContext(),songModelArrayList);
@@ -85,7 +87,6 @@ public class SearchFragment extends Fragment {
             recyclerViewSearchListSong.setVisibility(View.GONE);
             txtnotification.setVisibility(View.VISIBLE);
         }
-
     }
     private ArrayList<SongModel> getSongs(String name) {
         ArrayList<SongModel> songs = new ArrayList<>();

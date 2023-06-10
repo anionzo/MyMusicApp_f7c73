@@ -1,17 +1,21 @@
 package com.example.mymusicapp.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.FrameLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.widget.FrameLayout;
-
+import com.example.mymusicapp.API.Firebase.GetDatabaseDB;
 import com.example.mymusicapp.Fragments.MenuFragment;
+import com.example.mymusicapp.Models.TopicModel;
 import com.example.mymusicapp.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 

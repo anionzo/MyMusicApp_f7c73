@@ -3,29 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ShowListSongCategoryFragment">
+    tools:context=".API.FragmetFire.ShowListSongFragment">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
-            android:id="@+id/name_list_play"
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"/>
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:contentDescription="Sider Quảng cáo!"
-            android:layout_below="@id/name_list_play"
-
-            />
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Tất Cả Bài Hát"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_play_item"
-            android:layout_below="@id/slider"
+            android:layout_below="@+id/text"
+            android:id="@+id/list_song_frament"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </RelativeLayout>
+
 </FrameLayout>

@@ -17,7 +17,7 @@
     <color name="color_logo_3">#4f2330</color>
 
     <color name="primary">#181b2c</color>
-    <color name="menuColor">#F2121420</color>
+    <color name="menuColor">#000000</color>
 
     <color name="editText">#292E4b</color>
     <color name="transEditText">#80292E4B</color>
@@ -25,6 +25,9 @@
 
     <color name="starColor">#ED8770</color>
     <color name="endColor">#D95190</color>
+
+    <color name="endColor1">#1E7F8B</color>
+
 
     <color name="transStarColor">#80ED8770</color>
     <color name="transEndColor">#80D95190</color>
